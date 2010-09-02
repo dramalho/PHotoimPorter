@@ -1,0 +1,8 @@
+Script that organizes photo files acording to their EXIF tags
+
+Usage:
+ -h --help			Help screen
+ -r --recursive		Searches sub-directories for image files
+ -s --source		Source path
+ -d --destination	Destination Path
+
