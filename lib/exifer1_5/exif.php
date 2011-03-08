@@ -581,23 +581,23 @@ function read_entry(&$result,$in,$seek,$intel,$ifd_name,$globalOffset) {
 		if($result['VerboseOutput']==1) {
 			$result[$ifd_name]['MakerNote']['RawData'] = $data;
 		}
-		if(eregi("NIKON",$make)) {
+		if(stristr($make,"NIKON")) {
 			require_once('makers/nikon.php');
 			parseNikon($data,$result);
 			$result[$ifd_name]['KnownMaker'] = 1;
-		} else if(eregi("OLYMPUS",$make)) {
+		} else if(stristr($make,"OLYMPUS")) {
 			require_once('makers/olympus.php');
 			parseOlympus($data,$result,$seek,$globalOffset);
 			$result[$ifd_name]['KnownMaker'] = 1;
-		} else if(eregi("Canon",$make)) {
+		} else if(stristr($make,"Canon")) {
 			require_once('makers/canon.php');
 			parseCanon($data,$result,$seek,$globalOffset);
 			$result[$ifd_name]['KnownMaker'] = 1;
-		} else if(eregi("FUJIFILM",$make)) {
+		} else if(stristr($make,"FUJIFILM")) {
 			require_once('makers/fujifilm.php');
 			parseFujifilm($data,$result);
 			$result[$ifd_name]['KnownMaker'] = 1;
-		} else if(eregi("SANYO",$make)) {
+		} else if(stristr($make,"SANYO")) {
 			require_once('makers/sanyo.php');
 			parseSanyo($data,$result,$seek,$globalOffset);
 			$result[$ifd_name]['KnownMaker'] = 1;

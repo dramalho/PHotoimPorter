@@ -27,7 +27,6 @@ $lStrings['help'] = <<<EOS
 ** Author : David Ramalho <dramalho@gmail.com>
 **
 **********************************************************************
-
 EOS;
 
 $lSettings['recursive'] = false;
