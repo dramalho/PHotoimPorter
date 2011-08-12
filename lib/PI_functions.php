@@ -8,6 +8,7 @@ function fetch_file_list( $pPath, $pRecursive = false ) {
 
 	//-- Search the given directory
 	$lPathContents = scandir( $pPath );
+    
 
 	echo "Scanning : ".$pPath." - ".count($lPathContents)."\n";
 
@@ -51,6 +52,16 @@ function fetch_file_list( $pPath, $pRecursive = false ) {
 							}
 						}
 					}
+                    break;
+                default:
+				    $lResult[] = Array( 'path' => $lFile, 'exif' => array( 
+                                'IFD0' => array(
+                                    'DateTime' => date('Y-m-d H:i:s', filemtime( $lFile ) ),
+                                    'Make' => 'unknown',
+                                    'Model' => 'unknown',
+                                )                        
+                            )
+                    );
 			}
 		} elseif ( is_dir( $lFile ) ) {
 
