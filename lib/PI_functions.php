@@ -53,7 +53,7 @@ function fetch_file_list( $pPath, $pRecursive = false ) {
 						}
 					}
                     break;
-                default:
+                case 'MOV':
 				    $lResult[] = Array( 'path' => $lFile, 'exif' => array( 
                                 'IFD0' => array(
                                     'DateTime' => date('Y-m-d H:i:s', filemtime( $lFile ) ),
