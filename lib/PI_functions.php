@@ -32,10 +32,12 @@ function fetch_file_list( $pPath, $pRecursive = false ) {
 				case 'THM':
 				case 'CR2':
 					//-- Try to get the information we need
-					$lExifInfo = read_exif_data_raw( $lFile, false );
+                    //$lExifInfo = read_exif_data_raw( $lFile, false );
+                    $lExifInfo = exif_read_data( $lFile );
 
 					// Is it a valid JPEG (acording to mister Exifer ? )
-					if( $lExifInfo['ValidEXIFData'] ) {
+					if( $lExifInfo ) {
+						//$lResult[] = Array( 'path' => $lFile, 'exif' => $lExifInfo );
 						$lResult[] = Array( 'path' => $lFile, 'exif' => $lExifInfo );
 					}
 
@@ -54,12 +56,10 @@ function fetch_file_list( $pPath, $pRecursive = false ) {
 					}
                     break;
                 case 'MOV':
-				    $lResult[] = Array( 'path' => $lFile, 'exif' => array( 
-                                'IFD0' => array(
+				    $lResult[] = Array( 'path' => $lFile, 'exif' => array(                                 
                                     'DateTime' => date('Y-m-d H:i:s', filemtime( $lFile ) ),
                                     'Make' => 'unknown',
                                     'Model' => 'unknown',
-                                )                        
                             )
                     );
 			}

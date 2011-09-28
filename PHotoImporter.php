@@ -129,9 +129,9 @@ if ( count( $lResult ) == 0 ) {
 	foreach( $lResult as $lFile ) {
 		$lPathComponent = Array();
 		//var_dump( $lFile );
-		$lPathComponent[] = date( 'Y-m-d', strtotime( $lFile['exif']['IFD0']['DateTime'] ) );
-		$lPathComponent[] = trim( $lFile['exif']['IFD0']['Make'] );
-		$lPathComponent[] = trim( $lFile['exif']['IFD0']['Model'] );
+		$lPathComponent[] = date( 'Y-m-d', strtotime( $lFile['exif']['DateTime'] ) );
+		$lPathComponent[] = trim( $lFile['exif']['Make'] );
+		$lPathComponent[] = trim( $lFile['exif']['Model'] );
 
 		$lDestinationPath = realpath( $lSettings['destination'] ).DIRECTORY_SEPARATOR.implode(DIRECTORY_SEPARATOR, $lPathComponent).DIRECTORY_SEPARATOR.basename( $lFile['path'] );
 		//$lDestinationPath = str_ireplace( '/', '\\', $lDestinationPath);
